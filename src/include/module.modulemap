@@ -1,0 +1,10 @@
+module Aubio {
+    umbrella header "aubio.h"
+
+    export *
+    module * { export * }
+
+    link "Accelerate"
+    link framework "CoreFoundation"
+    link framework "AudioToolbox"
+}

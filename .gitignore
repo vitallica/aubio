@@ -52,3 +52,10 @@ python/tests/sounds
 aubio.egg-info
 .eggs
 .cache
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+*.xcodeproj
+*.xcworkspace
