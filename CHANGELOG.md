@@ -5,7 +5,7 @@ All notable changes to the Swift Package Manager wrapper for aubio will be docum
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.5.0-spm.1] - 2025-11-12
+## [0.5.0] - 2025-11-12
 
 ### Added
 - Initial Swift Package Manager support for aubio
@@ -32,6 +32,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Uses Accelerate framework instead of Ooura FFT
   - Enables Apple-specific audio I/O by default
   - Excludes external library dependencies (sndfile, avcodec, jack)
+
+### Fixed
+- Umbrella header (`src/include/aubio.h`) now uses correct relative paths (`../`) for all includes
+  - Fixes "fatal error: 'types.h' file not found" when importing module in Xcode
+  - Ensures all aubio headers are found relative to `publicHeadersPath: "include"`
 
 ### Technical Details
 - Based on aubio version 0.5.0-alpha
@@ -63,14 +68,14 @@ This SPM wrapper is based on [aubio 0.5.0-alpha](https://github.com/aubio/aubio)
 
 ## Version Numbering
 
-This SPM wrapper uses the following versioning scheme:
-- `X.Y.Z-spm.N` where:
-  - `X.Y.Z` matches the upstream aubio version
-  - `N` is the SPM wrapper revision number
+This SPM wrapper uses semantic versioning that tracks the upstream aubio version:
+- Major.Minor versions match upstream aubio (e.g., `0.5.x` based on aubio `0.5.0-alpha`)
+- Patch version increments for SPM wrapper updates and fixes
+- When upstream releases a new version, this wrapper will update accordingly
 
-Example: `0.5.0-spm.1` means:
-- Based on aubio 0.5.0
-- First SPM wrapper release
+Example: `0.5.1` means:
+- Based on aubio 0.5.0-alpha
+- Second release of SPM wrapper (first wrapper update)
 
-[0.5.0-spm.1]: https://github.com/vitallica/aubio/releases/tag/0.5.0-spm.1
-[Unreleased]: https://github.com/vitallica/aubio/compare/0.5.0-spm.1...HEAD
+[0.5.0]: https://github.com/vitallica/aubio/releases/tag/0.5.0
+[Unreleased]: https://github.com/vitallica/aubio/compare/0.5.0...HEAD
